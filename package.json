@@ -5,7 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "electron main.js",
-    "pkg": "electron-packager . google-doodle"
+    "pkg": "yarn pkg-mac && yarn pkg-win && yarn pkg-linux",
+    "pkg-mac": "electron-packager . doodle-checker --overwrite --platform=darwin --arch=x64 --icon=google.icns --prune=true --out=dist",
+    "pkg-win": "electron-packager . doodle-checker --overwrite --asar=true --platform=win32 --arch=ia32 --icon=google.ico --prune=true --out=dist --version-string.CompanyName=MrBBot --version-string.FileDescription=\"Checks for new Google Doodles and displays them\" --version-string.ProductName=\"Doodle Checker\"",
+    "pkg-linux": "electron-packager . doodle-checker --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=dist"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
