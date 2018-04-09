@@ -44,6 +44,7 @@ electron.app.on("ready", () => {
             const alt = $img.attr("alt");
 
             if(fs.existsSync("./.last") && fs.readFileSync("./.last", "utf-8") === alt) {
+                electron.app.quit();
                 process.exit(0);
                 return;
             }
