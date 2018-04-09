@@ -23,7 +23,10 @@ function createWindow(link, img, alt, width, height) {
     mainWindow.doodleLink = link;
     mainWindow.doodleTitle = alt;
     mainWindow.doodleData = `<img src="${img}" alt="${alt}"/>`;
-    mainWindow.exit = () => process.exit(0);
+    mainWindow.exit = () => {
+        electron.app.quit();
+        process.exit(0);
+    };
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, "index.html"),
         protocol: "file:",
